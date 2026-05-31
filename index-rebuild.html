@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三国演义 · 诺兰宇宙档案馆（全新干净重建版）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;family=Noto+Sans+SC:wght@300;400;500&amp;display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', system-ui, sans-serif;
+            background: #0A0A0A;
+            color: #E5E0D5;
+        }
+        
+        .heading-serif {
+            font-family: 'Noto Serif SC', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .battle-card {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .battle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .gold-button {
+            background: linear-gradient(145deg, #C5A26E, #8B7355);
+            color: #0A0A0A;
+            font-weight: 600;
+        }
+
+        .character-card {
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+        }
+
+        .nolan-quote {
+            font-style: italic;
+            border-left: 3px solid #C5A26E;
+            padding-left: 1rem;
+            color: #C5A26E;
+        }
+
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #C5A26E;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-[#0A0A0A] text-[#E5E0D5]">
+
+    <!-- Header -->
+    <header class="border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div>
+                <div class="flex items-center gap-x-3">
+                    <div class="w-3 h-3 bg-[#C5A26E] rounded-full"></div>
+                    <span class="text-xl font-semibold tracking-tight">三国演义 · 诺兰宇宙档案馆</span>
+                </div>
+                <div class="text-xs text-white/50 ml-6">无限算力观察者档案 · 电影级沉浸体验</div>
+            </div>
+            <div class="text-sm text-white/60">全新干净重建版 · 2026</div>
+        </div>
+    </header>
+
+    <!-- 人物档案馆 -->
+    <section class="max-w-7xl mx-auto px-6 pt-12 pb-16">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <div class="section-label mb-1">SECTION 02 • PERSONNEL DOSSIERS</div>
+                <h2 class="text-5xl heading-serif tracking-tight">人物档案馆</h2>
+            </div>
+            <div class="text-right">
+                <div class="text-sm text-[#C5A26E]">28+ 位核心人物</div>
+                <div class="text-xs text-white/40">点击卡片打开完整卷宗</div>
+            </div>
+        </div>
+
+        <div id="character-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+            <!-- 诸葛亮 -->
+            <div onclick="openDossier('zhugeliang')" class="character-card bg-[#111] rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#C5A26E]/50">
+                <div class="p-5">
+                    <div class="flex justify-between">
+                        <div>
+                            <div class="font-semibold text-2xl tracking-tight">诸葛亮</div>
+                            <div class="text-[#C5A26E] text-sm">孔明 · 卧龙</div>
+                        </div>
+                        <div class="text-right text-xs text-white/40">181—234<br>蜀</div>
+                    </div>
+                    <div class="mt-4 text-xs text-white/70 leading-relaxed">鞠躬尽瘁，死而后已。六出祁山，智绝天下。</div>
+                </div>
+            </div>
+
+            <!-- 关羽 -->
+            <div onclick="openDossier('guanyu')" class="character-card bg-[#111] rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#C5A26E]/50">
+                <div class="p-5">
+                    <div class="flex justify-between">
+                        <div>
+                            <div class="font-semibold text-2xl tracking-tight">关羽</div>
+                            <div class="text-[#C5A26E] text-sm">云长 · 武圣</div>
+                        </div>
+                        <div class="text-right text-xs text-white/40">？—219<br>蜀</div>
+                    </div>
+                    <div class="mt-4 text-xs text-white/70 leading-relaxed">温酒斩华雄，千里走单骑，水淹七军。</div>
+                </div>
+            </div>
+
+            <!-- 曹操 -->
+            <div onclick="openDossier('caocao')" class="character-card bg-[#111] rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#C5A26E]/50">
+                <div class="p-5">
+                    <div class="flex justify-between">
+                        <div>
+                            <div class="font-semibold text-2xl tracking-tight">曹操</div>
+                            <div class="text-[#C5A26E] text-sm">孟德 · 魏武帝</div>
+                        </div>
+                        <div class="text-right text-xs text-white/40">155—220<br>魏</div>
+                    </div>
+                    <div class="mt-4 text-xs text-white/70 leading-relaxed">宁教我负天下人，休教天下人负我。</div>
+                </div>
+            </div>
+
+            <!-- 周瑜 -->
+            <div onclick="openDossier('zhouyu')" class="character-card bg-[#111] rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#C5A26E]/50">
+                <div class="p-5">
+                    <div class="flex justify-between">
+                        <div>
+                            <div class="font-semibold text-2xl tracking-tight">周瑜</div>
+                            <div class="text-[#C5A26E] text-sm">公瑾 · 美周郎</div>
+                        </div>
+                        <div class="text-right text-xs text-white/40">175—210<br>吴</div>
+                    </div>
+                    <div class="mt-4 text-xs text-white/70 leading-relaxed">既生瑜，何生亮？赤壁火攻，雄姿英发。</div>
+                </div>
+            </div>
+
+            <!-- 刘备 -->
+            <div onclick="openDossier('liubei')" class="character-card bg-[#111] rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#C5A26E]/50">
+                <div class="p-5">
+                    <div class="flex justify-between">
+                        <div>
+                            <div class="font-semibold text-2xl tracking-tight">刘备</div>
+                            <div class="text-[#C5A26E] text-sm">玄德 · 蜀汉昭烈帝</div>
+                        </div>
+                        <div class="text-right text-xs text-white/40">161—223<br>蜀</div>
+                    </div>
+                    <div class="mt-4 text-xs text-white/70 leading-relaxed">桃园结义，三顾茅庐，白帝托孤。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 战争影院（视频区） -->
+    <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/10">
+        <div class="mb-8">
+            <div class="section-label mb-1">SECTION 03 • EPIC CINEMA</div>
+            <h2 class="text-5xl heading-serif tracking-tight">战争影院</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- 赤壁 -->
+            <div class="battle-card group rounded-3xl overflow-hidden border border-[#C5A26E]/40 bg-[#0F0E0B] cursor-pointer"
+                 onclick="playFullBattleVideo('assets/battles/red-cliffs-zhouyu-perspective.mp4', '赤壁之战 · 周瑜视角')">
+                <div class="h-56 bg-gradient-to-br from-[#2A1F14] to-black relative flex items-end p-6">
+                    <div class="relative z-10">
+                        <div class="text-xs px-3 py-1 bg-[#C5A26E] text-black inline-block rounded tracking-widest mb-2">诺兰式 · 火势实拍</div>
+                        <div class="text-white text-2xl font-semibold tracking-tight">赤壁之战</div>
+                        <div class="text-[#C5A26E] text-sm mt-1">208年 · 东风火攻</div>
+                    </div>
+                </div>
+                <div class="p-5 text-sm text-white/80">七星坛祭风，火龙吞没八十万水军。</div>
+            </div>
+
+            <!-- 虎牢关 -->
+            <div class="battle-card group rounded-3xl overflow-hidden border border-[#C5A26E]/40 bg-[#0F0E0B] cursor-pointer"
+                 onclick="playFullBattleVideo('', '虎牢关之战')">
+                <div class="h-56 bg-gradient-to-br from-[#1F1810] to-black relative flex items-end p-6">
+                    <div class="relative z-10">
+                        <div class="text-xs px-3 py-1 bg-[#C5A26E] text-black inline-block rounded tracking-widest mb-2">经典重现</div>
+                        <div class="text-white text-2xl font-semibold tracking-tight">虎牢关之战</div>
+                        <div class="text-[#C5A26E] text-sm mt-1">三英战吕布</div>
+                    </div>
+                </div>
+                <div class="p-5 text-sm text-white/80">刘关张三英战吕布，虎牢关前威名大振。</div>
+            </div>
+
+            <!-- 官渡 -->
+            <div class="battle-card group rounded-3xl overflow-hidden border border-[#C5A26E]/40 bg-[#0F0E0B] cursor-pointer"
+                 onclick="playFullBattleVideo('', '官渡之战')">
+                <div class="h-56 bg-gradient-to-br from-[#1A1810] to-black relative flex items-end p-6">
+                    <div class="relative z-10">
+                        <div class="text-xs px-3 py-1 bg-[#C5A26E] text-black inline-block rounded tracking-widest mb-2">以少胜多</div>
+                        <div class="text-white text-2xl font-semibold tracking-tight">官渡之战</div>
+                        <div class="text-[#C5A26E] text-sm mt-1">200年 · 曹操 vs 袁绍</div>
+                    </div>
+                </div>
+                <div class="p-5 text-sm text-white/80">二十万对百万，曹操以少胜多奠定北方。</div>
+            </div>
+
+            <!-- 夷陵之战 (新增) -->
+            <div class="battle-card group rounded-3xl overflow-hidden border border-[#C5A26E]/40 bg-[#0F0E0B] cursor-pointer"
+                 onclick="playFullBattleVideo('', '夷陵之战')">
+                <div class="h-56 bg-gradient-to-br from-[#2A1810] to-black relative flex items-end p-6">
+                    <div class="relative z-10">
+                        <div class="text-xs px-3 py-1 bg-[#C5A26E] text-black inline-block rounded tracking-widest mb-2">火烧连营</div>
+                        <div class="text-white text-2xl font-semibold tracking-tight">夷陵之战</div>
+                        <div class="text-[#C5A26E] text-sm mt-1">222年 · 陆逊火攻</div>
+                    </div>
+                </div>
+                <div class="p-5 text-sm text-white/80">陆逊火烧刘备七百里连营，蜀汉元气大伤。</div>
+            </div>
+
+            <!-- 长坂坡 (新增) -->
+            <div class="battle-card group rounded-3xl overflow-hidden border border-[#C5A26E]/40 bg-[#0F0E0B] cursor-pointer"
+                 onclick="playFullBattleVideo('', '长坂坡之战')">
+                <div class="h-56 bg-gradient-to-br from-[#1F1815] to-black relative flex items-end p-6">
+                    <div class="relative z-10">
+                        <div class="text-xs px-3 py-1 bg-[#C5A26E] text-black inline-block rounded tracking-widest mb-2">赵云七进七出</div>
+                        <div class="text-white text-2xl font-semibold tracking-tight">长坂坡之战</div>
+                        <div class="text-[#C5A26E] text-sm mt-1">208年 · 单骑救主</div>
+                    </div>
+                </div>
+                <div class="p-5 text-sm text-white/80">赵云单骑七进七出，救阿斗于百万军中。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 模态窗口 -->
+    <div id="dossier-modal" onclick="if (event.target.id === 'dossier-modal') closeDossier()" 
+         class="hidden fixed inset-0 z-[80] bg-black/95 flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0C0C0C] rounded-3xl border border-[#C5A26E]/20">
+            <div id="dossier-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // 干净的角色数据
+        const DEMO_DOSSIERS = {
+            'zhugeliang': {
+                name: '诸葛亮', style: '孔明', faction: '蜀', years: '181—234',
+                title: '蜀汉丞相 · 卧龙先生',
+                quote: '鞠躬尽瘁，死而后已。',
+                bio: '字孔明，琅琊阳都人。隐居隆中，自比管仲乐毅。三顾茅庐出山，隆中对策定三分。赤壁借东风，六出祁山，终老五丈原。',
+                fullBio: '诸葛亮，字孔明，琅琊阳都人氏。少孤，随叔父玄避乱荆州。玄卒后，躬耕隆中，抱膝长啸，自比管仲、乐毅。刘备三顾茅庐，始出。亮为备画《隆中对》，以荆益为根本，西和诸戎，南抚夷越，东联孙权，北拒曹操，天下可三分。建安十三年，亮奉命东使，舌战群儒，定孙刘联盟。与周瑜共谋赤壁，借东南风，火烧战船八十万。亮后佐备取西川，定南中，七擒孟获。白帝托孤，受命辅幼主。建兴五年，率师北伐，上《出师表》以誓。六出祁山，伐魏。街亭之战，马谡失街亭，亮挥泪斩之，自贬三等。十二年，卒于五丈原。临终遗令：“葬汉中定军山，依山为坟，足容棺而已。”其智深，其忠纯，其志大，其才高，千古之下，无人能及。',
+                novelVsHistory: [
+                    { item: '借东风', novel: '七星坛祈风，七日而至', history: '周瑜、鲁肃已察气象，亮或参与谋划' },
+                    { item: '空城计', novel: '抚琴退司马懿', history: '正史无载，属演义神化' },
+                    { item: '北伐', novel: '六出祁山', history: '实五次北伐，含木门道之战' },
+                    { item: '七擒孟获', novel: '七擒七纵，攻心为上', history: '南征确有其事，“七擒”乃小说夸张' }
+                ],
+                relations: '刘备（君臣鱼水）、关羽（敬其义）、张飞（敬其勇）、司马懿（宿敌）、姜维（衣钵传人）',
+                quotes: ['“鞠躬尽瘁，死而后已。”——《出师表》', '“淡泊以明志，宁静以致远。”——《诫子书》', '“谋事在人，成事在天。”']
+            },
+            'guanyu': {
+                name: '关羽', style: '云长', faction: '蜀', years: '？—219',
+                title: '五虎上将之首 · 武圣',
+                quote: '温酒斩华雄，千里走单骑。',
+                bio: '字云长，河东解良人。桃园结义，温酒斩华雄，过五关斩六将，水淹七军，败走麦城。义薄云天，后世尊为武圣。',
+                fullBio: '关羽，字云长，河东解良人氏。身长九尺，髯长二尺，面如重枣，丹凤眼，卧蚕眉。与刘备、张飞桃园结义。初平讨黄巾，温酒斩华雄一战，单刀匹马斩杀华雄于万军之中，酒尚未凉而华雄已亡。建安五年，刘备兵败，关羽被曹操生擒。曹操爱其才，封为偏将军，厚礼相待。关羽感其恩，但忠心不改，约三事后封金挂印，过五关斩六将，千里走单骑护二嫂重归刘备。赤壁之战后镇守荆州。建安二十四年，水淹七军，擒于禁、斩庞德，威震华夏。孙权遣吕蒙白衣渡江袭荆州，关羽败走麦城，不降而死。曹孟德曾叹：“生子当如孙仲谋，刘备亦有子如关云长乎？”其义，其勇，其忠，冠绝三国。',
+                novelVsHistory: [
+                    { item: '温酒斩华雄', novel: '酒未凉已斩华雄', history: '华雄实为孙坚部将所杀' },
+                    { item: '水淹七军', novel: '大败于禁庞德', history: '确有其事，曹操一度欲迁都' },
+                    { item: '华容道义释曹操', novel: '义释曹公', history: '正史无载，属小说突出“义绝”' }
+                ],
+                relations: '刘备（义兄）、张飞（义弟）、曹操（曾臣服，感恩不改）、吕蒙（对手）',
+                quotes: ['“吾乃关云长也！”', '“大丈夫当为国效力，安能久居人下？”', '“玉可碎而不可改其白，竹可焚而不可毁其节。”']
+            },
+            'caocao': {
+                name: '曹操', style: '孟德', faction: '魏', years: '155—220',
+                title: '魏武帝 · 奸雄之最',
+                quote: '宁教我负天下人，休教天下人负我。',
+                bio: '字孟德，沛国谯县人。讨董卓，官渡破袁绍，统一北方。赤壁败后退保。唯才是举，诗才横溢，一代枭雄。',
+                fullBio: '曹操，字孟德，沛国谯县人。少有大志，任侠放荡。讨董卓、官渡破袁绍、平乌桓，北方尽归。赤壁之败后，退而治军。挟天子以令诸侯，唯才是举，破格用荀彧、郭嘉、程昱等。平生多疑，然爱才如命。诗文并茂，《短歌行》《观沧海》流传千古。临终，遗令分香卖履，托孤曹丕。既是乱世奸雄，亦是治世能臣。',
+                novelVsHistory: [
+                    { item: '杀吕伯奢', novel: '宁教我负天下人', history: '此典出演义，历史曹操确多疑' },
+                    { item: '挟天子', novel: '奸雄极致', history: '事实，但曹操亦有匡扶汉室之心' }
+                ],
+                relations: '荀彧、郭嘉（最得力谋士）、夏侯惇（从弟）、张辽（爱将）、曹丕（子）',
+                quotes: ['“老骥伏枥，志在千里；烈士暮年，壮心不已。”', '“山不厌高，海不厌深。周公吐哺，天下归心。”']
+            },
+            'zhouyu': {
+                name: '周瑜', style: '公瑾', faction: '吴', years: '175—210',
+                title: '东吴大都督 · 美周郎',
+                quote: '既生瑜，何生亮？',
+                bio: '字公瑾，庐江舒县人。孙策挚友，赤壁主帅。雄姿英发，精通音律。病逝巴丘，年仅三十六。',
+                fullBio: '周瑜，字公瑾，庐江舒县人。美姿容，精音律，人称“美周郎”。孙策旧友，策卒后与张昭共辅孙权。建安十三年，曹操南下，瑜任大都督。与诸葛亮联手，定火攻之策。黄盖苦肉，庞统连环，借东南风，一把火焚曹军于赤壁。瑜英姿飒爽，才华盖世，然气量稍狭。病逝巴丘，年三十六。临终叹：“既生瑜，何生亮！”其才，其美，其志，令人扼腕。',
+                novelVsHistory: [
+                    { item: '三气周瑜', novel: '被诸葛亮气死', history: '实为病逝，与诸葛亮无直接因果' },
+                    { item: '连环计', novel: '瑜主谋', history: '周瑜确有火攻之谋，细节为小说强化' }
+                ],
+                relations: '孙策（挚友）、孙权（主公）、诸葛亮（对手）、程普（老将）',
+                quotes: ['“既生瑜，何生亮！”', '“丈夫处世，遇知己之主，外托君臣之义，内结骨肉之恩。”']
+            },
+            'liubei': {
+                name: '刘备', style: '玄德', faction: '蜀', years: '161—223',
+                title: '蜀汉昭烈帝',
+                quote: '勿以善小而不为，勿以恶小而之为。',
+                bio: '字玄德，涿郡人，汉室宗亲。桃园结义，三顾茅庐，白帝托孤。仁德之主，屡败屡战，终成帝业。',
+                fullBio: '刘备，字玄德，涿郡涿县人，中山靖王之后。少孤贫，与母贩履织席为业。闻黄巾起，与关羽、张飞桃园结义，誓同生死。讨黄巾、依公孙瓒、投刘表。三顾茅庐请诸葛亮。赤壁后取荆州、入西川。汉中称王，221年于成都称帝，国号汉。夷陵大败，章武三年崩于白帝城，托孤诸葛亮。性宽厚，知人善任，然多败于刚愎。',
+                novelVsHistory: [
+                    { item: '三顾茅庐', novel: '求贤若渴', history: '确有其事，次数与细节为小说美化' },
+                    { item: '仁德', novel: '近乎完美', history: '历史刘备亦有权谋残忍一面' }
+                ],
+                relations: '关羽、张飞（桃园结义）、诸葛亮（军师如父）、赵云（忠臣）',
+                quotes: ['“勿以善小而不为，勿以恶小而之为。”', '“兄弟如手足，妻子如衣服。”']
+            },
+            'zhangfei': {
+                name: '张飞', style: '翼德', faction: '蜀', years: '？—221',
+                title: '五虎上将 · 燕人张翼德',
+                quote: '燕人张翼德在此！',
+                bio: '字翼德，涿郡人。桃园结义，长坂坡一声吼退曹军百万，瓦口关夜战张郃。暴躁嗜酒，终被部将所杀。',
+                fullBio: '张飞，字翼德，涿郡人。与刘备、关羽桃园结义。长坂坡一声大吼，吓退曹军百万。瓦口关夜战，勇冠三军。性暴躁，鞭笞士卒。221年，为关羽报仇，进军东吴。帐下范疆、张达因常被鞭打，夜刺飞于阆中。飞勇猛绝伦，然无将才，惜哉！',
+                novelVsHistory: [
+                    { item: '长坂坡', novel: '一声吼退百万', history: '确有长坂之战，吼退为小说夸张' }
+                ],
+                relations: '刘备（义兄）、关羽（义兄）、刘禅（外甥）',
+                quotes: ['“燕人张翼德在此！”', '“吾乃燕人张翼德也！”']
+            },
+            'zhaoyun': {
+                name: '赵云', style: '子龙', faction: '蜀', years: '？—229',
+                title: '五虎上将 · 常山赵子龙',
+                quote: '子龙一身是胆。',
+                bio: '字子龙，常山人。长坂坡七进七出，单骑救阿斗。汉水之战以少胜多，忠肝义胆，百战不殆。',
+                fullBio: '赵云，字子龙，常山真定人。初从公孙瓒，后归刘备。长坂坡之战，单骑七进七出，救阿斗于百万军中。汉水之战，击退曹军。云一生忠勇，未尝败绩。刘备称帝，封云永昌亭侯。云沉稳寡言，智勇双全，五虎上将中最为可靠。',
+                novelVsHistory: [
+                    { item: '长坂救主', novel: '七进七出', history: '确有其事，赵云功劳最大' }
+                ],
+                relations: '刘备（主公）、诸葛亮（敬重）、阿斗（救命恩人）',
+                quotes: ['“子龙一身是胆。”']
+            },
+            'sunquan': {
+                name: '孙权', style: '仲谋', faction: '吴', years: '182—252',
+                title: '吴大帝',
+                quote: '生子当如孙仲谋。',
+                bio: '字仲谋，吴郡富春人。十九岁继父兄之业，坐镇江东。赤壁联刘抗曹，夷陵火烧刘备连营。外宽内忌，晚年多疑。',
+                fullBio: '孙权，字仲谋，吴郡富春人。孙坚次子，孙策弟。策卒时年十九，权统江东。建安十三年，权听鲁肃言，联刘抗曹，赤壁大胜。建安二十四年，袭杀关羽，取荆州。黄武元年称王，229年称帝。晚年多疑，杀太子孙登，立孙亮。权能守父兄基业，然难成大业。',
+                novelVsHistory: [
+                    { item: '袭荆州', novel: '吕蒙白衣渡江', history: '孙权主谋，吕蒙执行' }
+                ],
+                relations: '孙策（兄）、鲁肃（谋主）、周瑜（都督）、吕蒙（名将）',
+                quotes: ['“生子当如孙仲谋。”']
+            },
+            'zhouyu': {
+                name: '周瑜', style: '公瑾', faction: '吴', years: '175—210',
+                title: '东吴大都督 · 美周郎',
+                quote: '既生瑜，何生亮？',
+                bio: '字公瑾，庐江舒县人。孙策挚友，赤壁主帅。雄姿英发，精通音律。病逝巴丘，年仅三十六。',
+                fullBio: '周瑜，字公瑾，庐江舒县人。美姿容，精音律，人称“美周郎”。孙策旧友，策卒后与张昭共辅孙权。建安十三年，曹操南下，瑜任大都督。与诸葛亮联手，定火攻之策。黄盖苦肉，庞统连环，借东南风，一把火焚曹军于赤壁。瑜英姿飒爽，才华盖世，然气量稍狭。病逝巴丘，年三十六。临终叹：“既生瑜，何生亮！”其才，其美，其志，令人扼腕。',
+                novelVsHistory: [
+                    { item: '三气周瑜', novel: '被诸葛亮气死', history: '实为病逝，与诸葛亮无直接因果' },
+                    { item: '连环计', novel: '瑜主谋', history: '周瑜确有火攻之谋，细节为小说强化' }
+                ],
+                relations: '孙策（挚友）、孙权（主公）、诸葛亮（对手）、程普（老将）',
+                quotes: ['“既生瑜，何生亮！”', '“丈夫处世，遇知己之主，外托君臣之义，内结骨肉之恩。”']
+            },
+            'lubu': {
+                name: '吕布', style: '奉先', faction: '群雄', years: '？—199',
+                title: '飞将 · 天下第一',
+                quote: '人中吕布，马中赤兔。',
+                bio: '字奉先，五原人。勇冠三军，虎牢关三英战吕布，辕门射戟。反复无常，杀义父董卓。白门楼被缢杀。',
+                fullBio: '吕布，字奉先，五原郡九原人。勇冠三军，号“飞将”。虎牢关三英战吕布，辕门射戟。先后认丁原、董卓为义父，旋即杀之。辗转袁术、袁绍，夺徐州，杀刘备妻。曹操围下邳，吕布被擒。白门楼上，吕布求活，曹操不许，与刘备共缢杀之。临死言：“人中吕布，马中赤兔。”勇则勇矣，然无忠义之心，可悲可叹。',
+                novelVsHistory: [
+                    { item: '三英战吕布', novel: '刘关张联手', history: '确有虎牢关之战，“三人战吕布”为小说戏剧化' }
+                ],
+                relations: '董卓（义父后杀）、貂蝉（连环计）、曹操（最终对手）',
+                quotes: ['“人中吕布，马中赤兔。”', '“我吕布也！”']
+            },
+            'simayi': {
+                name: '司马懿', style: '仲达', faction: '魏', years: '179—251',
+                title: '太傅 · 晋宣帝',
+                quote: '老而不死是为贼。',
+                bio: '字仲达，河内人。足智多谋，忍辱负重。多次与诸葛亮对阵，装病避曹爽，高平陵政变，权倾魏国。',
+                fullBio: '司马懿，字仲达，河内温县人。初不仕，被曹操强征。辅曹丕、曹睿，忍辱负重。诸葛亮北伐时，司马懿坚守不战，亮卒后始出。曹芳时，司马懿与子师发动高平陵政变，杀曹爽，独揽大权。其子司马昭、孙司马炎终代魏建晋。懿深沉多智，权谋第一人。',
+                novelVsHistory: [
+                    { item: '空城计', novel: '被亮琴声吓退', history: '正史无载，属演义虚构' }
+                ],
+                relations: '诸葛亮（宿敌）、曹爽（政敌）、司马师、司马昭（子）',
+                quotes: ['“老而不死是为贼。”', '“吾观诸葛亮食少事烦，其能久乎？”']
+            }
+        };
+
+        function openDossier(id) {
+            const modal = document.getElementById('dossier-modal');
+            const content = document.getElementById('dossier-content');
+            const data = DEMO_DOSSIERS[id];
+            
+            if (!data) {
+                alert('此人物档案暂未收录（ID: ' + id + '）');
+                return;
+            }
+
+            const portraitSrc = `assets/characters/${id}-main.jpg`;
+            const displayBio = data.fullBio || data.bio;
+
+            content.innerHTML = `
+                <div class="p-8 md:p-12">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <div class="flex items-center gap-x-4">
+                                <div>
+                                    <div class="text-6xl heading-serif tracking-[-2px]">${data.name}</div>
+                                    <div class="text-2xl text-[#C5A26E] -mt-1">${data.style}</div>
+                                </div>
+                                <div class="px-4 py-1.5 rounded-full text-sm border self-start mt-4" style="border-color:#C5A26E; color:#C5A26E">
+                                    ${data.faction}
+                                </div>
+                            </div>
+                            <div class="mt-2 text-xl text-white/70">${data.title}</div>
+                        </div>
+                        <button onclick="closeDossier()" class="text-4xl leading-none text-white/30 hover:text-white/60 transition">×</button>
+                    </div>
+
+                    <div class="grid md:grid-cols-5 gap-x-8">
+                        <div class="md:col-span-2 mb-8 md:mb-0">
+                            <div class="aspect-[3/3.6] bg-[#111] rounded-2xl border border-[#C5A26E]/20 overflow-hidden relative">
+                                <img src="${portraitSrc}" alt="${data.name}" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                            </div>
+                            <div class="mt-3 text-center text-sm text-[#C5A26E]">${data.years}</div>
+                        </div>
+
+                        <div class="md:col-span-3">
+                            <div class="nolan-quote mb-6">${data.quote}</div>
+                            <div class="prose prose-invert text-[#C9C3B4] leading-relaxed text-[15px]">${displayBio}</div>
+                            
+                            <div class="mt-8 pt-6 border-t border-white/10">
+                                <div class="text-xs text-[#C5A26E] tracking-widest mb-3">关键关系</div>
+                                <div class="text-sm text-white/80">${data.relations}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12">
+                        <div class="archive-label mb-4">演义 vs 正史</div>
+                        <div class="space-y-3 text-sm">
+                            ${data.novelVsHistory.map(item => `
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-3 bg-[#111] p-5 rounded-2xl border-l-4 border-[#C5A26E]/60">
+                                    <div class="md:col-span-3 font-medium text-[#C5A26E]">${item.item}</div>
+                                    <div class="md:col-span-4 text-white/70"><span class="text-[10px] block text-white/40">演义</span>${item.novel}</div>
+                                    <div class="md:col-span-5 text-white/70"><span class="text-[10px] block text-white/40">正史记载</span>${item.history}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <div class="archive-label mb-4">名言</div>
+                        <div class="space-y-2">
+                            ${data.quotes.map(q => `<div class="px-6 py-4 bg-[#111] rounded-2xl text-[#D4C9AF] text-sm">「 ${q} 」</div>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDossier() {
+            const modal = document.getElementById('dossier-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function playFullBattleVideo(videoSrc, title) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4';
+            
+            let videoHTML = '';
+            if (videoSrc) {
+                videoHTML = `<video controls autoplay class="w-full h-full" style="max-height: 80vh;"><source src="${videoSrc}" type="video/mp4"></video>`;
+            } else {
+                videoHTML = `<div class="flex items-center justify-center h-96 bg-[#111] text-center text-white/60">该战役电影正在使用无限算力生成中...<br>（干净重建版暂用占位）</div>`;
+            }
+
+            modal.innerHTML = `
+                <div class="w-full max-w-6xl">
+                    <div class="flex justify-between items-center mb-4 px-2">
+                        <div class="text-[#C5A26E] text-xl tracking-[2px]">${title}</div>
+                        <button onclick="this.closest('.fixed').remove()" class="text-3xl text-white/60 hover:text-white">×</button>
+                    </div>
+                    <div class="relative bg-black rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio: 16 / 9;">
+                        ${videoHTML}
+                    </div>
+                    <div class="text-center mt-4 text-xs text-white/50 tracking-widest">
+                        诺兰式多视角电影级体验 · 按 ESC 或点击右上角关闭
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // 安全初始化视频 hover（即使主脚本有问题也能工作）
+        function initVideoPreviews() {
+            const previews = document.querySelectorAll('.battle-card video');
+            previews.forEach(video => {
+                const card = video.closest('.battle-card');
+                if (!card) return;
+
+                card.onmouseenter = () => video.play().catch(() => {});
+                card.onmouseleave = () => {
+                    video.pause();
+                    video.currentTime = 0;
+                };
+            });
+            console.log('%c[重建版] 视频预览已初始化', 'color:#C5A26E');
+        }
+
+        // 初始化
+        function init() {
+            console.log('%c[重建版] 三国演义 · 诺兰宇宙档案馆 已干净加载', 'color:#C5A26E');
+            initVideoPreviews();
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

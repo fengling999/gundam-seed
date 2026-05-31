@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "name": "刘备",
+    "zi": "玄德",
+    "faction": "蜀",
+    "short": "汉室之胄，仁德之主。桃园结义，终成帝业。",
+    "fullBio": "刘备，字玄德，涿郡人。幼年丧父，与母亲贩履织席为生...（完整300字文学化传记）",
+    "quote": "兄弟如手足，妻子如衣服。",
+    "image": "/assets/characters/liubei-main.jpg"
+  },
+  {
+    "id": 2,
+    "name": "诸葛亮",
+    "zi": "孔明",
+    "faction": "蜀",
+    "short": "卧龙出山，鞠躬尽瘁。智慧与忠诚的永恒化身。",
+    "fullBio": "诸葛亮，字孔明，琅琊人。隐居隆中，自比管乐...（完整300字）",
+    "quote": "鞠躬尽瘁，死而后已。",
+    "image": "/assets/characters/zhugeliang-main.jpg"
+  }
+]

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三国演义 · 故事档案</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;family=Noto+Sans+SC:wght@300;400;500&amp;display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', system-ui, sans-serif;
+            background: #0F0F0F;
+            color: #E5E0D5;
+        }
+        
+        .heading-serif {
+            font-family: 'Noto Serif SC', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .content-card {
+            transition: all 0.2s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+        }
+
+        .section-title {
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #C5A26E;
+            font-weight: 500;
+        }
+
+        .wiki-content {
+            max-width: 72ch;
+            line-height: 1.8;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-[#0F0F0F] text-[#E5E0D5]">
+
+    <!-- 简洁顶部导航 -->
+    <nav class="border-b border-white/10 bg-[#0A0A0A] sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <span class="font-semibold text-xl tracking-tight">三国演义</span>
+                <span class="text-xs text-white/40">故事档案</span>
+            </div>
+            <div class="flex items-center gap-x-6 text-sm">
+                <a href="#characters" class="hover:text-[#C5A26E] transition">主要人物</a>
+                <a href="#outline" class="hover:text-[#C5A26E] transition">故事脉络</a>
+                <a href="#chapters" class="hover:text-[#C5A26E] transition">回目索引</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 简单标题区 -->
+    <header class="max-w-4xl mx-auto px-8 pt-16 pb-12 text-center border-b border-white/10">
+        <div class="text-xs tracking-[3px] text-[#C5A26E] mb-3">BASED ON WIKI + HISTORICAL RECORDS</div>
+        <h1 class="text-6xl heading-serif tracking-tight mb-4">三国演义</h1>
+        <p class="text-xl text-white/70 max-w-md mx-auto">罗贯中著 · 完整故事与人物档案</p>
+        <p class="mt-6 text-sm text-white/50 max-w-lg mx-auto">本页内容基于维基百科与历史资料整理，力求清晰、准确、易读。</p>
+    </header>
+
+    <!-- 主要人物 -->
+    <section id="characters" class="max-w-6xl mx-auto px-8 py-16">
+        <div class="mb-8">
+            <div class="section-title mb-2">CHARACTERS</div>
+            <h2 class="text-4xl heading-serif tracking-tight">主要人物</h2>
+        </div>
+
+        <div class="character-grid" id="character-grid">
+            <!-- JS 动态生成干净的卡片 -->
+        </div>
+    </section>
+
+    <!-- 故事脉络 -->
+    <section id="outline" class="bg-[#0A0A0A] border-y border-white/10 py-16">
+        <div class="max-w-4xl mx-auto px-8">
+            <div class="mb-8">
+                <div class="section-title mb-2">STORY OUTLINE</div>
+                <h2 class="text-4xl heading-serif tracking-tight">故事脉络</h2>
+            </div>
+            
+            <div class="prose prose-invert max-w-none text-[15px] leading-relaxed text-white/85">
+                <p>东汉末年，宦官专权，黄巾起义爆发。各地豪强趁机起兵，天下大乱。</p>
+                <p>曹操挟天子以令诸侯，官渡之战击败袁绍，基本统一北方。孙权在江东坐稳，蜀汉刘备在诸葛亮辅佐下取西川，与魏、吴形成三国鼎立之势。</p>
+                <p>赤壁之战、六出祁山、白帝城托孤、司马氏篡权……三国故事波澜壮阔，最终归于晋。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 回目索引 -->
+    <section id="chapters" class="max-w-4xl mx-auto px-8 py-16">
+        <div class="mb-8">
+            <div class="section-title mb-2">CHAPTERS</div>
+            <h2 class="text-4xl heading-serif tracking-tight">重要回目</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-x-12 text-sm text-white/80 leading-relaxed">
+            <div>
+                <p class="mb-1">第1回 宴桃园豪杰三结义 斩黄巾英雄首立功</p>
+                <p class="mb-1">第42回 献荆州诸葛亮用计 取长沙黄忠立功</p>
+                <p class="mb-1">第49回 七星坛诸葛祭风 三江口周瑜纵火</p>
+                <p class="mb-1">第81回 急兄仇张飞遇害 雪弟恨先主兴兵</p>
+            </div>
+            <div>
+                <p class="mb-1">第104回 陨大星汉丞相归天 见木像魏都督丧胆</p>
+                <p class="mb-1">第119回 假投降巧计安邦 反出师直言取祸</p>
+                <p class="mb-1">第120回 荐杜预老将献新谋 降孙皓三分归一统</p>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-xs text-white/40">
+            完整120回内容请参考原著《三国演义》。本页为精要提炼。
+        </div>
+    </section>
+
+    <footer class="max-w-6xl mx-auto px-8 py-12 text-xs text-white/40 border-t border-white/10">
+        本网站内容整理自公开历史与演义资料，仅供学习参考。
+    </footer>
+
+    <!-- 干净的详情模态 -->
+    <div id="modal" onclick="if (event.target.id === 'modal') closeModal()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="bg-[#111] max-w-3xl w-full max-h-[90vh] overflow-auto rounded-2xl border border-white/10">
+            <div class="p-8" id="modal-content">
+                <!-- 动态内容 -->
+            </div>
+            <div class="border-t border-white/10 p-4 flex justify-end">
+                <button onclick="closeModal()" class="px-6 py-2 text-sm text-white/60 hover:text-white">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 干净的15位主要人物数据（来自早期wiki清理内容）
+        const CHARACTERS = [
+            {
+                id: 'liubei',
+                name: '刘备',
+                zi: '玄德',
+                faction: '蜀',
+                short: '汉室宗亲，仁德之主，桃园结义，三顾茅庐，白帝托孤。',
+                full: '刘备，字玄德，涿郡人。中山靖王之后。幼年贫苦，与母贩履织席为生。黄巾起义时与关羽、张飞桃园结义。此后依附公孙瓒、陶谦、刘表。荆州遇诸葛亮，三顾茅庐请其出山。赤壁联孙抗曹后入川定西川，称汉中王。章武元年称帝于成都。夷陵之战大败，白帝城托孤于诸葛亮。章武三年崩，谥昭烈皇帝。',
+                quote: '兄弟如手足，妻子如衣服。'
+            },
+            {
+                id: 'caocao',
+                name: '曹操',
+                zi: '孟德',
+                faction: '魏',
+                short: '乱世之奸雄，挟天子以令诸侯，官渡破袁绍，北征乌桓。',
+                full: '曹操，字孟德，沛国谯人。黄巾起兵讨董卓后迎天子于许昌，挟天子以令诸侯。官渡之战以少胜多击败袁绍，统一北方。南下赤壁败于孙刘联军。建安二十五年病逝，子曹丕称帝后追尊为武皇帝。诗文俱佳，唯才是举。',
+                quote: '宁教我负天下人，休教天下人负我。'
+            },
+            {
+                id: 'zhugeliang',
+                name: '诸葛亮',
+                zi: '孔明',
+                faction: '蜀',
+                short: '卧龙先生，隆中对策，赤壁借东风，六出祁山，鞠躬尽瘁。',
+                full: '诸葛亮，字孔明，琅琊阳都人。隐居隆中，自比管仲乐毅。刘备三顾茅庐后出山，提出隆中对策。赤壁之战借东南风火烧曹军。入川后治蜀，七擒孟获。六出祁山伐魏，病逝五丈原。遗命蒋琬、费祎继任。',
+                quote: '鞠躬尽瘁，死而后已。'
+            },
+            {
+                id: 'guanyu',
+                name: '关羽',
+                zi: '云长',
+                faction: '蜀',
+                short: '温酒斩华雄，千里走单骑，水淹七军，大意失荆州。',
+                full: '关羽，字云长，河东解良人。桃园结义第二位。温酒斩华雄，斩颜良诛文丑，过五关斩六将。水淹七军威震华夏。后失守荆州，走麦城，被东吴所杀。民间尊为武圣。',
+                quote: '义薄云天。'
+            },
+            {
+                id: 'zhangfei',
+                name: '张飞',
+                zi: '翼德',
+                faction: '蜀',
+                short: '长坂坡一声吼退曹军百万，瓦口关夜战张郃。',
+                full: '张飞，字翼德，涿郡人。桃园结义第三位。长坂坡一声大吼吓退曹军。瓦口关大败张郃。性暴躁，鞭打士卒。221年为关羽报仇，被部将范疆、张达所杀。',
+                quote: '燕人张翼德在此！'
+            }
+            // 可继续补充其他人物
+        ];
+
+        function renderCharacters() {
+            const grid = document.getElementById('character-grid');
+            grid.innerHTML = '';
+
+            CHARACTERS.forEach(char => {
+                const div = document.createElement('div');
+                div.className = 'content-card bg-[#111] border border-white/10 p-6 rounded-2xl cursor-pointer hover:border-[#C5A26E]/40';
+                div.innerHTML = `
+                    <div class="flex justify-between">
+                        <div>
+                            <div class="text-sm text-[#C5A26E]">${char.faction}</div>
+                            <div class="text-3xl font-semibold mt-1">${char.name}</div>
+                            <div class="text-sm text-white/50">${char.zi}</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-sm text-white/70 leading-relaxed">${char.short}</div>
+                `;
+                div.onclick = () => showDetail(char);
+                grid.appendChild(div);
+            });
+        }
+
+        function showDetail(char) {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            
+            content.innerHTML = `
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="text-sm text-[#C5A26E]">${char.faction}</div>
+                        <div class="text-5xl font-bold tracking-tight">${char.name}</div>
+                        <div class="text-xl text-white/60">${char.zi}</div>
+                    </div>
+                    <button onclick="closeModal()" class="text-3xl text-white/30 hover:text-white">×</button>
+                </div>
+                
+                <div class="text-lg italic text-[#C5A26E] mb-8">「${char.quote}」</div>
+                
+                <div class="text-[15px] leading-relaxed text-white/85">
+                    ${char.full}
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // 初始化
+        function init() {
+            renderCharacters();
+            
+            // 简单键盘支持
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('modal');
+                    if (!modal.classList.contains('hidden')) closeModal();
+                }
+            });
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

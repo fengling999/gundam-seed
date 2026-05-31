@@ -1,0 +1,76 @@
+6100|                                utterance.voice = chosenVoice;
+6101|                            }
+6102|
+6103|                            speechSynthesis.speak(utterance);
+6104|                        } catch(e) {}
+6105|                    };
+6106|
+6107|                    // 确保 voices 已加载
+6108|                    if (speechSynthesis.getVoices().length > 0) {
+6109|                        speakWithVoice();
+6110|                    } else {
+6111|                        speechSynthesis.onvoiceschanged = speakWithVoice;
+6112|                    }
+6113|                    btn.textContent = "重新播放";
+6114|                    btn.disabled = false;
+6115|                    return;
+6116|                }
+6117|                img.src = state.frames[i];
+6118|            }, 1600);
+6119|        };
+6120|
+6121|        window.onload = init;
+6122|
+6123|        // ==================== 强袭自由高达封面 + 点击进入 ====================
+6124|        window.enterWebsite = function() {
+6125|            const overlay = document.getElementById('seed-entrance');
+6126|            if (!overlay) return;
+6127|
+6128|            // Nolan cinematic cut: slow elegant dissolve with micro push (fate opening)
+6129|            if (window.gsap) {
+6130|                gsap.to(overlay, {
+6131|                    opacity: 0,
+6132|                    scale: 1.012,
+6133|                    duration: 1.35,
+6134|                    ease: "power2.inOut",
+6135|                    onComplete: () => {
+6136|                        overlay.style.display = 'none';
+6137|                        overlay.style.transform = '';
+6138|                    }
+6139|                });
+6140|            } else {
+6141|                overlay.style.transition = 'opacity 1.0s cubic-bezier(0.23,1,0.32,1), transform 1.35s cubic-bezier(0.23,1,0.32,1)';
+6142|                overlay.style.opacity = '0';
+6143|                overlay.style.transform = 'scale(1.012)';
+6144|                setTimeout(() => {
+6145|                    overlay.style.display = 'none';
+6146|                }, 1350);
+6147|            }
+6148|        };
+6149|
+6150|        // ==================== 强袭自由高达 vs 正义高达 对战进场动画 (顶级设计师版) ====================
+6151|        function startSeedEntrance() {
+6152|            const overlay = document.getElementById('seed-entrance');
+6153|            const canvas = document.getElementById('battle-canvas');
+6154|            if (!canvas) return; // 元素不存在时安全退出
+6155|            const ctx = canvas.getContext('2d');
+6156|            const title = document.getElementById('seed-title');
+6157|            const subtitle = document.getElementById('seed-subtitle');
+6158|
+6159|            canvas.width = window.innerWidth;
+6160|            canvas.height = window.innerHeight;
+6161|
+6162|            let time = 0;
+6163|            let particles = [];
+6164|            let beams = [];
+6165|
+6166|            // 初始化爆炸粒子
+6167|            for (let i = 0; i < 180; i++) {
+6168|                particles.push({
+6169|                    x: Math.random() * canvas.width,
+6170|                    y: Math.random() * canvas.height,
+6171|                    vx: (Math.random() - 0.5) * 6,
+6172|                    vy: (Math.random() - 0.5) * 4,
+6173|                    size: Math.random() * 2.5 + 0.8,
+6174|                    life: Math.random() * 80 + 40,
+6175|                    color: Math.random() > 0.6 ? '#C5A26E' : '#FF4500'

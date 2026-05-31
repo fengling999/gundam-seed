@@ -1,0 +1,95 @@
+5891|                </div>
+5892|            `;
+5893|            document.body.appendChild(modal);
+5894|
+5895|            // Subtle GSAP entrance if available
+5896|            if (window.gsap) {
+5897|                const content = modal.querySelector('.max-w-2xl');
+5898|                gsap.fromTo(content, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+5899|            }
+5900|        };
+5901|
+5902|        // ==================== 命运抽选 (Surprise Me) - 诺兰式随机探索功能 ====================
+5903|        window.surpriseMeGundam = function() {
+5904|            const keys = Object.keys(gundamsData);
+5905|            if (!keys.length) return;
+5906|
+5907|            // 真正的“命运”感觉：带一点随机权重（优先显示还没收藏的）
+5908|            const notFavorited = keys.filter(k => !window.favorites.gundams.includes(k));
+5909|            const pool = notFavorited.length > 2 ? notFavorited : keys;
+5910|
+5911|            const randomId = pool[Math.floor(Math.random() * pool.length)];
+5912|            const data = gundamsData[randomId];
+5913|
+5914|            // 先关闭可能存在的筛选模态
+5915|            const existingModals = document.querySelectorAll('.fixed.inset-0');
+5916|            existingModals.forEach(m => m.remove());
+5917|
+5918|            // 优雅延迟打开详情（营造“命运降临”的仪式感）
+5919|            setTimeout(() => {
+5920|                showGundamDetail(randomId);
+5921|
+5922|                // 额外：短暂高亮提示这是命运的选择
+5923|                setTimeout(() => {
+5924|                    const modal = document.querySelector('.fixed.inset-0:last-child');
+5925|                    if (modal) {
+5926|                        const banner = document.createElement('div');
+5927|                        banner.className = 'absolute top-4 left-1/2 -translate-x-1/2 px-4 py-1 text-xs tracking-[3px] bg-[#C8102E] text-white rounded-full flex items-center gap-2 shadow-lg';
+5928|                        banner.innerHTML = `<i class="fa-solid fa-dice"></i> <span>命运选择了你</span>`;
+5929|                        modal.querySelector('.max-w-5xl')?.appendChild(banner);
+5930|
+5931|                        setTimeout(() => banner.remove(), 2200);
+5932|                    }
+5933|                }, 420);
+5934|            }, 180);
+5935|        };
+5936|
+5937|        // ==================== 移动端导航菜单 ====================
+5938|        window.showMobileNav = function() {
+5939|            const modal = document.createElement('div');
+5940|            modal.className = 'fixed inset-0 bg-black/95 z-[400] flex flex-col';
+5941|            
+5942|            modal.innerHTML = `
+5943|                <div class="flex justify-between items-center px-6 h-16 border-b border-white/10">
+5944|                    <div class="flex items-center gap-3">
+5945|                        <div class="w-7 h-7 rounded-full bg-gradient-to-br from-[#C8102E] to-[#C5A26E]"></div>
+5946|                        <div class="font-semibold">GUNDAM SEED</div>
+5947|                    </div>
+5948|                    <button onclick="this.closest('.fixed').remove()" class="text-3xl text-white/50">×</button>
+5949|                </div>
+5950|                
+5951|                <div class="flex-1 px-6 py-8 space-y-1 text-lg">
+5952|                    <a href="#gundams" onclick="this.closest('.fixed').remove()" class="block py-4 border-b border-white/10 hover:text-[#C5A26E]">高达 Mobile Suits</a>
+5953|                    <a href="#factions" onclick="this.closest('.fixed').remove()" class="block py-4 border-b border-white/10 hover:text-[#C5A26E]">主要势力 Factions</a>
+5954|                    <a href="#pilots" onclick="this.closest('.fixed').remove()" class="block py-4 border-b border-white/10 hover:text-[#C5A26E]">驾驶员 Pilots</a>
+5955|                    <a href="#relationships" onclick="this.closest('.fixed').remove()" class="block py-4 border-b border-white/10 hover:text-[#C5A26E]">人物关系</a>
+5956|                    <a href="#gallery" onclick="this.closest('.fixed').remove()" class="block py-4 border-b border-white/10 hover:text-[#C5A26E]">角色画廊</a>
+5957|                    
+5958|                    <div class="pt-6 space-y-3">
+5959|                        <button onclick="this.closest('.fixed').remove(); showMyArchive()" 
+5960|                                class="w-full flex items-center justify-center gap-2 py-4 bg-[#C5A26E] text-black font-semibold tracking-widest rounded-2xl">
+5961|                            <i class="fa-solid fa-heart"></i>
+5962|                            <span>MY ARCHIVE 我的档案</span>
+5963|                        </button>
+5964|                        
+5965|                        <button onclick="this.closest('.fixed').remove(); showRandomCinematicNote()" 
+5966|                                class="w-full flex items-center justify-center gap-2 py-3 border border-white/20 text-sm tracking-widest rounded-2xl hover:bg-white/5">
+5967|                            <i class="fa-solid fa-film"></i>
+5968|                            <span>诺兰随机洞察</span>
+5969|                        </button>
+5970|
+5971|                        <!-- New delightful quick fate action -->
+5972|                        <button onclick="this.closest('.fixed').remove(); if(window.surpriseMeGundam) window.surpriseMeGundam();" 
+5973|                                class="w-full flex items-center justify-center gap-2 py-3 border border-[#C8102E]/40 text-sm tracking-widest rounded-2xl hover:bg-[#C8102E]/10 text-[#C8102E]">
+5974|                            <i class="fa-solid fa-dice"></i>
+5975|                            <span>命运抽选 (R)</span>
+5976|                        </button>
+5977|                    </div>
+5978|                </div>
+5979|                
+5980|                <div class="p-6 text-center text-xs text-white/40 border-t border-white/10">COSMIC ERA 71-73 • MOBILE ARCHIVE</div>
+5981|            `;
+5982|            document.body.appendChild(modal);
+5983|
+5984|            // Cinematic GSAP entrance for mobile menu (Nolan weight)
+5985|            if (window.gsap) {

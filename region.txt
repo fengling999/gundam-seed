@@ -1,0 +1,120 @@
+5981|            `;
+5982|            document.body.appendChild(modal);
+5983|
+5984|            // Cinematic GSAP entrance for mobile menu (Nolan weight)
+5985|            if (window.gsap) {
+5986|                gsap.fromTo(modal, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+5987|            }
+5988|        };
+5989|
+5990|        // ==================== 恋爱动态漫播放器 + 配音 ====================
+5991|        window.playRomanceComic = function(couple) {
+5992|            const modal = document.createElement('div');
+5993|            modal.className = 'fixed inset-0 bg-black/95 z-[300] flex items-center justify-center p-6';
+5994|
+5995|            let frames = [];
+5996|            let narration = "";
+5997|            let title = "";
+5998|
+5999|            if (couple === 'kira-lacus') {
+6000|                title = "基拉 & 拉克丝 · 战后小岛的永恒约定";
+6001|                frames = [
+6002|                    "assets/gundam/kira-lacus-romance1.jpg",
+6003|                    "assets/gundam/kira-lacus-romance2.jpg",
+6004|                    "assets/gundam/kira-lacus-beach.jpg"
+6005|                ];
+6006|                narration = "在战后的小岛上，基拉终于可以放下所有重量，只看着拉克丝。她的歌声，成为了他新的世界。";
+6007|            } else if (couple === 'athrun-cagalli') {
+6008|                title = "阿斯兰 & 卡嘉莉 · 驾驶舱里的心跳";
+6009|                frames = [
+6010|                    "assets/gundam/athrun-cagalli-romance.jpg",
+6011|                    "assets/gundam/athrun-cagalli-cockpit.jpg"
+6012|                ];
+6013|                narration = "在最危险的战场，阿斯兰与卡嘉莉用最安静的方式互相守护。他们的心，在炮火中依然相连。";
+6014|            } else if (couple === 'shinn-lunamaria') {
+6015|                title = "真 & 露娜玛丽亚 · 殖民地的温柔夜晚";
+6016|                frames = [
+6017|                    "assets/gundam/shinn-lunamaria-romance.jpg",
+6018|                    "assets/gundam/shinn-lunamaria-balcony.jpg"
+6019|                ];
+6020|                narration = "曾经被仇恨支配的少年，在露娜玛丽亚的温柔中，终于学会了如何去爱。";
+6021|            }
+6022|
+6023|            modal.innerHTML = `
+6024|                <div class="max-w-4xl w-full bg-[#0A0A0A] rounded-3xl overflow-hidden border border-white/10">
+6025|                    <div class="px-8 py-6 border-b border-white/10 flex justify-between items-center">
+6026|                        <div>
+6027|                            <div class="text-[#C5A26E] text-xs tracking-[3px]">DYNAMIC COMIC + VOICE</div>
+6028|                            <div class="text-2xl font-bold">${title}</div>
+6029|                        </div>
+6030|                        <button onclick="this.closest('.fixed').remove()" class="text-3xl text-white/30 hover:text-white">×</button>
+6031|                    </div>
+6032|
+6033|                    <div class="relative">
+6034|                        <img id="comic-frame" src="${frames[0]}" class="w-full aspect-video object-cover">
+6035|                        <div class="absolute bottom-0 left-0 right-0 bg-black/80 p-5 text-sm text-white/90" id="comic-caption">
+6036|                            ${narration}
+6037|                        </div>
+6038|                    </div>
+6039|
+6040|                    <div class="p-6 flex gap-4">
+6041|                        <button onclick="window.startRomancePlayback('${couple}', this)" 
+6042|                                class="flex-1 py-3 bg-[#C5A26E] text-black font-medium rounded-2xl hover:bg-white">
+6043|                            播放动态漫 + 配音
+6044|                        </button>
+6045|                        <button onclick="this.closest('.fixed').remove()" 
+6046|                                class="px-8 py-3 border border-white/20 rounded-2xl">关闭</button>
+6047|                    </div>
+6048|                </div>
+6049|            `;
+6050|            document.body.appendChild(modal);
+6051|
+6052|            // 保存状态
+6053|            window.currentRomance = { frames, narration, couple };
+6054|        };
+6055|
+6056|        window.startRomancePlayback = function(couple, btn) {
+6057|            const state = window.currentRomance;
+6058|            if (!state) return;
+6059|
+6060|            const img = document.getElementById('comic-frame');
+6061|            const caption = document.getElementById('comic-caption');
+6062|            btn.disabled = true;
+6063|            btn.textContent = "播放中...";
+6064|
+6065|            let i = 0;
+6066|            img.src = state.frames[i];
+6067|            caption.textContent = state.narration;
+6068|
+6069|            // 简单顺序播放
+6070|            const interval = setInterval(() => {
+6071|                i++;
+6072|                if (i >= state.frames.length) {
+6073|                    clearInterval(interval);
+6074|                    // 播放配音 - 妩媚中年少妇音色
+6075|                    const speakWithVoice = () => {
+6076|                        try {
+6077|                            const utterance = new SpeechSynthesisUtterance(state.narration);
+6078|                            utterance.lang = 'zh-CN';
+6079|                            utterance.rate = 0.82;     // 稍慢，妩媚从容的中年女性感
+6080|                            utterance.pitch = 1.08;    // 柔美略带成熟的女性音色
+6081|
+6082|                            // 优先选择女性中文声音
+6083|                            const voices = speechSynthesis.getVoices();
+6084|                            let chosenVoice = voices.find(v => 
+6085|                                v.lang.includes('zh') && 
+6086|                                (v.name.toLowerCase().includes('female') || 
+6087|                                 v.name.includes('女') || 
+6088|                                 v.name.includes('Xiaoxiao') || 
+6089|                                 v.name.includes('Xiaoyi') ||
+6090|                                 v.name.includes('Huihui') ||
+6091|                                 v.name.includes('Yaoyao'))
+6092|                            );
+6093|
+6094|                            if (!chosenVoice) {
+6095|                                // 退而求其次找任何中文女声
+6096|                                chosenVoice = voices.find(v => v.lang.includes('zh') && v.name.toLowerCase().includes('female'));
+6097|                            }
+6098|
+6099|                            if (chosenVoice) {
+6100|                                utterance.voice = chosenVoice;
