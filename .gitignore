@@ -1,0 +1,47 @@
+# ── 构建工具 ──────────────────────────────────────────
+node_modules/
+src/
+css/
+docs/
+js/
+gundam-seed-app/
+temporal-archive/
+高达SEED网站/
+三国 诺兰史诗/
+
+# ── 备份 / 草稿 HTML ──────────────────────────────────
+*.bak
+*.bak-*
+*-backup.*
+truncated-broken*
+gundam-seed.truncated*
+index-clean.html
+index-fancy-backup.html
+index-luxury.html
+index-rebuild.html
+gundam-seed.html
+index.html.bak*
+三国.html
+三国_可用版*.html
+
+# ── 日志 / 状态 / 队列文件 ────────────────────────────
+*.txt
+*-state.json
+*-log.txt
+*-queue.txt
+_bugscan.txt
+__bashprobe.txt
+region.txt
+region2.txt
+region3.txt
+CHANGELOG.md
+
+# ── 构建配置（不需要部署到线上）────────────────────────
+package.json
+package-lock.json
+tailwind.config.js
+script-clean.js
+
+# ── 系统文件 ──────────────────────────────────────────
+.DS_Store
+Thumbs.db

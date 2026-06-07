@@ -35,3 +35,64 @@
 ---
 
 *这不是一个网站。这是一部属于 21 世纪的《三国演义》电影档案。*
+
+---
+
+## GUNDAM SEED 档案馆 — 生产部署指南
+
+`高达SEED.html` 当前使用 Tailwind CSS 运行时 CDN（`cdn.tailwindcss.com`），适合本地开发。  
+**上线前必须替换为编译版样式表**，以消除运行时 JS 体积、消除布局闪烁，并获得最佳 CSP 兼容性。
+
+### 一次性安装
+
+```bash
+npm install
+```
+
+### 每次部署前构建
+
+```bash
+npm run build
+# 或开发时监听变更：
+npm run watch
+```
+
+构建产物为 `dist/output.css`（已压缩）。
+
+### 替换 HTML 中的 CDN 行
+
+找到 `高达SEED.html` 中的注释块：
+
+```html
+<!-- PRODUCTION: replace this <script> with the compiled stylesheet ... -->
+<script src="https://cdn.tailwindcss.com"></script>
+```
+
+将整个 `<script src="https://cdn.tailwindcss.com"></script>` 替换为：
+
+```html
+<link rel="stylesheet" href="dist/output.css">
+```
+
+### 需要手动替换的真实域名（共 4 处）
+
+搜索文件中的 `https://YOUR-DOMAIN.com` 替换为你的真实域名，共涉及：
+
+1. `<link rel="canonical" href="https://YOUR-DOMAIN.com/">` — SEO canonical URL
+2. `<meta property="og:url" content="https://YOUR-DOMAIN.com/">` — Open Graph 页面 URL
+3. `<meta property="og:image" content="https://YOUR-DOMAIN.com/assets/gundam/...">` — OG 分享图
+4. `<meta name="twitter:image" content="https://YOUR-DOMAIN.com/assets/gundam/...">` — Twitter Card 图
+
+**示例**：若域名为 `https://seed.example.com`，则替换为：
+- canonical → `https://seed.example.com/`
+- og:url → `https://seed.example.com/`
+- og:image → `https://seed.example.com/assets/gundam/strike-freedom-gundam.jpg`
+- twitter:image → `https://seed.example.com/assets/gundam/strike-freedom-gundam.jpg`
+
+### 依赖版本
+
+| 包 | 版本 |
+|---|---|
+| tailwindcss | ^3.4.0 |
+
+Node.js 要求：≥ 18
