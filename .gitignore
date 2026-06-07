@@ -36,6 +36,9 @@ region2.txt
 region3.txt
 CHANGELOG.md
 
+# ── 文档 / 说明文件 ───────────────────────────────────
+README.md
+
 # ── 构建配置（不需要部署到线上）────────────────────────
 package.json
 package-lock.json
